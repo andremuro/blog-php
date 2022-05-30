@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Artigos.php';
+require_once 'src/Artigos.php';
 require_once 'Conexao.php';
 
 $artigo = new Artigos($mysql);
@@ -21,7 +21,7 @@ $artigos = $artigo->exibirTodos();
         <h1>Meu Blog</h1>
         <?php foreach ($artigos as $artigo) { ?>
             <h2>
-                <a href="">
+                <a href="artigo.php?id=<?php echo $artigo['id'] ?>">
                     <?php echo $artigo['titulo']; ?>
                 </a>
             </h2>

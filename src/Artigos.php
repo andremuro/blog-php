@@ -15,4 +15,14 @@ class Artigos
 
     return $artigos;
   }
+
+  public function exibirArtigoPeloId($id)
+  {
+    $buscaArtigo = $this->mysql->prepare('SELECT id, titulo,conteudo FROM artigos WHERE id = ?');
+    $buscaArtigo->bind_param('s', $id);
+    $buscaArtigo->execute();
+    $artigo = $buscaArtigo->get_result()->fetch_assoc();
+
+    return $artigo;
+  }
 }
