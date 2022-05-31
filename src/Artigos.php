@@ -25,4 +25,11 @@ class Artigos
 
     return $artigo;
   }
+
+  public function adicionarArtigo($titulo, $conteudo)
+  {
+    $insereArtigo = $this->mysql->prepare('INSERT INTO artigos (titulo, conteudo) VALUES (?,?)');
+    $insereArtigo->bind_param('ss', $titulo, $conteudo);
+    $insereArtigo->execute();
+  }
 }
