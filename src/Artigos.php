@@ -32,4 +32,18 @@ class Artigos
     $insereArtigo->bind_param('ss', $titulo, $conteudo);
     $insereArtigo->execute();
   }
+
+  public function deletarArtigos($id)
+  {
+    $removeArtigo = $this->mysql->prepare('DELETE FROM artigos WHERE id = ?');
+    $removeArtigo->bind_param('s', $id);
+    $removeArtigo->execute();
+  }
+
+  public function atualizarArquivos($id, $titulo, $conteudo)
+  {
+    $atualizarArquivos = $this->mysql->prepare('UPDATE artigos SET titulo = ? , conteudo = ?  WHERE id = ?');
+    $atualizarArquivos->bind_param('sss', $titulo, $conteudo, $id);
+    $atualizarArquivos->execute();
+  }
 }

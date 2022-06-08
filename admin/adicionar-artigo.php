@@ -1,6 +1,7 @@
 <?php
 
 require_once '../src/Artigos.php';
+require_once '../src/Redireciona.php';
 require_once '../Conexao.php';
 
 if ($_SERVER["REQUEST_METHOD"] === 'POST') {
@@ -8,8 +9,8 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
     $artigo = new Artigos($mysql);
     $insereArtigo = $artigo->adicionarArtigo($_POST['titulo'], $_POST['conteudo']);
 
-    header('Location: adicionar-artigo.php');
-    die();
+    $redireciona = new Redireciona();
+    $redireciona->redireciona('index.php');
 }
 
 ?>
